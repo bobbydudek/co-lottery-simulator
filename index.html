@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lottery Simulator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="draw-panel" aria-labelledby="app-title">
+        <div class="panel-copy">
+          <p class="eyebrow">6 numbers from 1 to 40</p>
+          <h1 id="app-title">Lottery Simulator</h1>
+          <p class="summary">
+            Build a ticket, run one draw, or simulate thousands of draws to see
+            how often your numbers land.
+          </p>
+        </div>
+
+        <div class="results" aria-live="polite">
+          <p class="label">Latest draw</p>
+          <div id="drawNumbers" class="balls" aria-label="Latest winning numbers"></div>
+          <div id="matchBanner" class="match-banner">Pick a ticket and start a draw.</div>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Lottery controls and results">
+        <div class="ticket-panel">
+          <div class="section-heading">
+            <div>
+              <p class="label">Your ticket</p>
+              <h2>Choose six numbers</h2>
+            </div>
+            <button id="quickPickButton" class="icon-button" type="button" title="Quick pick" aria-label="Quick pick">
+              QP
+            </button>
+          </div>
+
+          <div id="ticketGrid" class="number-grid" aria-label="Choose ticket numbers"></div>
+          <div class="ticket-actions">
+            <button id="drawButton" class="primary-button" type="button">Draw once</button>
+            <button id="clearButton" class="secondary-button" type="button">Clear</button>
+          </div>
+
+          <div class="lucky-panel" aria-live="polite">
+            <div class="section-heading">
+              <div>
+                <p class="label">Lucky numbers</p>
+                <h2>Quick pick generator</h2>
+              </div>
+            </div>
+            <div id="luckyNumbers" class="lucky-numbers" aria-label="Generated lucky numbers"></div>
+            <div class="ticket-actions">
+              <button id="generateLuckyButton" class="primary-button" type="button">Generate</button>
+              <button id="useLuckyButton" class="secondary-button" type="button">Use as ticket</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="sim-panel">
+          <div class="section-heading">
+            <div>
+              <p class="label">Simulator</p>
+              <h2>Run many draws</h2>
+            </div>
+          </div>
+
+          <label class="field" for="drawCount">
+            Draw count
+            <input id="drawCount" type="number" min="1" max="100000" step="1" value="1000" />
+          </label>
+          <div class="ticket-actions">
+            <button id="simulateButton" class="primary-button" type="button">Simulate</button>
+            <button id="resetStatsButton" class="secondary-button" type="button">Reset stats</button>
+          </div>
+
+          <div class="stats-grid" aria-label="Simulation statistics">
+            <div class="stat">
+              <span id="totalDraws">0</span>
+              <p>Total draws</p>
+            </div>
+            <div class="stat">
+              <span id="bestMatch">0</span>
+              <p>Best match</p>
+            </div>
+            <div class="stat">
+              <span id="jackpots">0</span>
+              <p>Jackpots</p>
+            </div>
+          </div>
+
+          <div class="match-table" aria-label="Match breakdown">
+            <div><span>6 matches</span><strong id="match6">0</strong></div>
+            <div><span>5 matches</span><strong id="match5">0</strong></div>
+            <div><span>4 matches</span><strong id="match4">0</strong></div>
+            <div><span>3 matches</span><strong id="match3">0</strong></div>
+            <div><span>2 or fewer</span><strong id="matchLow">0</strong></div>
+          </div>
+        </div>
+
+        <div class="history-panel">
+          <div class="section-heading">
+            <div>
+              <p class="label">Recent draws</p>
+              <h2>History</h2>
+            </div>
+          </div>
+          <ol id="historyList" class="history-list"></ol>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
